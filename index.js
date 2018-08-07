@@ -4,6 +4,9 @@ const assert = require('assert');
 
 const binary = require('binary');
 const validator = require('gltf-validator');
+const Ajv = require('ajv');
+
+const vrmSchema = require('./vrm.schema.json');
 
 (async () => {
 	if (process.argv.length !== 3) {
@@ -13,6 +16,7 @@ const validator = require('gltf-validator');
 
 	const data = await promisify(fs.readFile)(process.argv[2]);
 
+	// validate as gltf
 	await validator.validateBytes(data);
 
 	const parser = binary.parse(data);
@@ -41,13 +45,21 @@ const validator = require('gltf-validator');
 		if (chunkType === 0x4E4F534A) {
 			const json = chunkData.toString();
 			const data = JSON.parse(json);
-			console.log('Extension Data:', data.extensions);
+
+			const ajv = new Ajv({allErrors: true});
+			const isValid = ajv.validate(vrmSchema, data.extensions.VRM);
+
+			if (!isValid) {
+				throw new Error(ajv.errors.map(({message}) => message).join('\n'));
+			}
+
+			console.log('VRM Extension Data:', data.extensions);
+
 			return;
 		}
 
 		// Binary
 		if (chunkType === 0x004E4942) {
-			console.log('Binary Payload:', chunkData);
 			return;
 		}
 
