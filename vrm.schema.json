@@ -301,7 +301,7 @@
                       "type": "integer"
                     },
                     "weight": {
-                      "type": "integer"
+                      "type": "number"
                     }
                   },
                   "required": [
@@ -313,7 +313,10 @@
                 }
               },
               "materialValues": {
-                "type": "integer"
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
               },
               "name": {
                 "type": "string"
@@ -341,10 +344,126 @@
       "type": "object",
       "properties": {
         "boneGroups": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "bones": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "center": {
+                "type": "integer"
+              },
+              "colliderGroups": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "comment": {
+                "type": "string"
+              },
+              "dragForce": {
+                "type": "number"
+              },
+              "gravityDir": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "z": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false
+              },
+              "gravityPower": {
+                "type": "number"
+              },
+              "hitRadius": {
+                "type": "number"
+              },
+              "stiffiness": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "bones",
+              "center",
+              "colliderGroups",
+              "comment",
+              "dragForce",
+              "gravityDir",
+              "gravityPower",
+              "hitRadius",
+              "stiffiness"
+            ],
+            "additionalProperties": false
+          }
         },
         "colliderGroups": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "colliders": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "offset": {
+                      "type": "object",
+                      "properties": {
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "z": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "x",
+                        "y",
+                        "z"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "radius": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "offset",
+                    "radius"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "node": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "colliders",
+              "node"
+            ],
+            "additionalProperties": false
+          }
         }
       },
       "required": [
@@ -354,7 +473,83 @@
       "additionalProperties": false
     },
     "materialProperties": {
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "shader": {
+            "type": "string"
+          },
+          "renderQueue": {
+            "type": "integer"
+          },
+          "floatProperties": {
+            "type": "object",
+            "patternProperties": {
+              "^.*$": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
+          },
+          "keywordMap": {
+            "type": "object",
+            "patternProperties": {
+              "^.*$": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          },
+          "tagMap": {
+            "type": "object",
+            "patternProperties": {
+              "^.*$": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "RenderType"
+            ],
+            "additionalProperties": false
+          },
+          "textureProperties": {
+            "type": "object",
+            "patternProperties": {
+              "^.*$": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "vectorProperties": {
+            "type": "object",
+            "patternProperties": {
+              "^.*$": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "name",
+          "shader",
+          "renderQueue",
+          "floatProperties",
+          "keywordMap",
+          "tagMap",
+          "textureProperties",
+          "vectorProperties"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "required": [
