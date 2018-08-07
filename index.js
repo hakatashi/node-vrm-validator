@@ -55,7 +55,7 @@ const vrmSchema = require('./vrm.schema.json');
 				)).join(', '));
 			}
 
-			console.log('VRM Extension Data:', data.extensions);
+			console.log('VRM Extension Data:', data.extensions.VRM.firstPerson.lookAtHorizontalInner);
 
 			return;
 		}

@@ -68,7 +68,27 @@
       "type": "object",
       "properties": {
         "humanBones": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "bone": {
+                "type": "string"
+              },
+              "node": {
+                "type": "integer"
+              },
+              "useDefaultValues": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "bone",
+              "node",
+              "useDefaultValues"
+            ],
+            "additionalProperties": false
+          }
         },
         "armStretch": {
           "type": "number"
@@ -135,7 +155,23 @@
           "additionalProperties": false
         },
         "meshAnnotations": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "firstPersonFlag": {
+                "type": "string"
+              },
+              "mesh": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "firstPersonFlag",
+              "mesh"
+            ],
+            "additionalProperties": false
+          }
         },
         "lookAtTypeName": {
           "type": "string"
@@ -144,7 +180,10 @@
           "type": "object",
           "properties": {
             "curve": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
             },
             "xRange": {
               "type": "number"
@@ -164,7 +203,10 @@
           "type": "object",
           "properties": {
             "curve": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
             },
             "xRange": {
               "type": "number"
@@ -184,7 +226,10 @@
           "type": "object",
           "properties": {
             "curve": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
             },
             "xRange": {
               "type": "number"
@@ -204,7 +249,10 @@
           "type": "object",
           "properties": {
             "curve": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
             },
             "xRange": {
               "type": "number"
@@ -237,7 +285,51 @@
       "type": "object",
       "properties": {
         "blendShapeGroups": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "binds": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "mesh": {
+                      "type": "integer"
+                    },
+                    "weight": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "index",
+                    "mesh",
+                    "weight"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "materialValues": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "presetName": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "binds",
+              "materialValues",
+              "name",
+              "presetName"
+            ],
+            "additionalProperties": false
+          }
         }
       },
       "required": [
