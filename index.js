@@ -55,7 +55,7 @@ const vrmSchema = require('./vrm.schema.json');
 				)).join(', '));
 			}
 
-			console.log('VRM Extension Data:', data.extensions.VRM.materialProperties[0].floatProperties);
+			console.log('VRM Extension Data:', data.extensions.VRM);
 
 			return;
 		}
