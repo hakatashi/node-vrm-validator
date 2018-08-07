@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/hakatashi/node-vrm-validator#readme",
   "dependencies": {
-    "binary": "^0.3.0"
+    "binary": "^0.3.0",
+    "gltf-validator": "^2.0.0-dev.2.4"
   }
 }
