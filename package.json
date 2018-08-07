@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/hakatashi/node-vrm-validator/issues"
   },
-  "homepage": "https://github.com/hakatashi/node-vrm-validator#readme"
+  "homepage": "https://github.com/hakatashi/node-vrm-validator#readme",
+  "dependencies": {
+    "binary": "^0.3.0"
+  }
 }
