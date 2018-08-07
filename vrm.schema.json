@@ -46,7 +46,23 @@
         "otherLicenseUrl": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "title",
+        "version",
+        "author",
+        "contactInformation",
+        "reference",
+        "texture",
+        "allowedUserName",
+        "violentUssageName",
+        "sexualUssageName",
+        "commercialUssageName",
+        "otherPermissionUrl",
+        "licenseName",
+        "otherLicenseUrl"
+      ],
+      "additionalProperties": false
     },
     "humanoid": {
       "type": "object",
@@ -78,7 +94,19 @@
         "hasTranslationDoF": {
           "type": "boolean"
         }
-      }
+      },
+      "required": [
+        "humanBones",
+        "armStretch",
+        "legStretch",
+        "upperArmTwist",
+        "lowerArmTwist",
+        "upperLegTwist",
+        "lowerLegTwist",
+        "feetSpacing",
+        "hasTranslationDoF"
+      ],
+      "additionalProperties": false
     },
     "firstPerson": {
       "type": "object",
@@ -98,7 +126,13 @@
             "z": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false
         },
         "meshAnnotations": {
           "type": "array"
@@ -118,7 +152,13 @@
             "yRange": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "curve",
+            "xRange",
+            "yRange"
+          ],
+          "additionalProperties": false
         },
         "lookAtHorizontalOuter": {
           "type": "object",
@@ -132,7 +172,13 @@
             "yRange": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "curve",
+            "xRange",
+            "yRange"
+          ],
+          "additionalProperties": false
         },
         "lookAtVerticalDown": {
           "type": "object",
@@ -146,7 +192,13 @@
             "yRange": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "curve",
+            "xRange",
+            "yRange"
+          ],
+          "additionalProperties": false
         },
         "lookAtVerticalUp": {
           "type": "object",
@@ -160,9 +212,26 @@
             "yRange": {
               "type": "number"
             }
-          }
+          },
+          "required": [
+            "curve",
+            "xRange",
+            "yRange"
+          ],
+          "additionalProperties": false
         }
-      }
+      },
+      "required": [
+        "firstPersonBone",
+        "firstPersonBoneOffset",
+        "meshAnnotations",
+        "lookAtTypeName",
+        "lookAtHorizontalInner",
+        "lookAtHorizontalOuter",
+        "lookAtVerticalDown",
+        "lookAtVerticalUp"
+      ],
+      "additionalProperties": false
     },
     "blendShapeMaster": {
       "type": "object",
@@ -170,7 +239,11 @@
         "blendShapeGroups": {
           "type": "array"
         }
-      }
+      },
+      "required": [
+        "blendShapeGroups"
+      ],
+      "additionalProperties": false
     },
     "secondaryAnimation": {
       "type": "object",
@@ -181,10 +254,25 @@
         "colliderGroups": {
           "type": "array"
         }
-      }
+      },
+      "required": [
+        "boneGroups",
+        "colliderGroups"
+      ],
+      "additionalProperties": false
     },
     "materialProperties": {
       "type": "array"
     }
-  }
+  },
+  "required": [
+    "exporterVersion",
+    "meta",
+    "humanoid",
+    "firstPerson",
+    "blendShapeMaster",
+    "secondaryAnimation",
+    "materialProperties"
+  ],
+  "additionalProperties": false
 }
