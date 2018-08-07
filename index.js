@@ -50,7 +50,9 @@ const vrmSchema = require('./vrm.schema.json');
 			const isValid = ajv.validate(vrmSchema, data.extensions.VRM);
 
 			if (!isValid) {
-				throw new Error(ajv.errors.map(({message}) => message).join('\n'));
+				throw new Error(ajv.errors.map(({dataPath, message}) => (
+					`${dataPath} ${message}`
+				)).join(', '));
 			}
 
 			console.log('VRM Extension Data:', data.extensions);
